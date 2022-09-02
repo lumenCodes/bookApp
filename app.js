@@ -8,7 +8,7 @@ const { ulid } = require('ulid')
 const port = process.env.PORT || 8000
 
 app.listen(port, (req, res) => {
-    console.log(`Server is up and running on port ${port}, We are good to go...🚀🚀`)
+    console.log(`Server is up and running on port ${port}, We are good to go...🚀`)
 })
 
 let db = []
