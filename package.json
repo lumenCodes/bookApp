@@ -1,0 +1,25 @@
+{
+  "name": "bookapp",
+  "version": "1.0.0",
+  "engines": {
+    "node": "^16.x",
+    "npm": "^8.x"
+  },
+  "description": "This is a simple Api to show the basic CRUD operations with a spice of authorization.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "ulid": "^2.3.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19"
+  },
+  "keywords": []
+}
