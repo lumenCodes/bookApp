@@ -1,6 +1,10 @@
-const app =  require('express') 
+const {Router} =  require('express') 
+const appRoutes = Router()
+const { ulid } = require('ulid')
 
-app.get('/home', (req, res) => {
+
+let db = []
+appRoutes.get('/home', (req, res) => {
 
     res.send('<h3>This book app will be used to display the list of books that a user has created</h3>' + db.map((book) => {
         return [book.name].join(" ")
@@ -8,7 +12,7 @@ app.get('/home', (req, res) => {
     )
 });
 
-app.post('/createBook', (req, res) => {
+appRoutes.post('/createBook', (req, res) => {
     const index = db.length - 1
     const newBook =
     {
@@ -23,7 +27,7 @@ app.post('/createBook', (req, res) => {
     res.send(db)
 })
 
-app.patch('/updateBook', (req, res) => {
+appRoutes.patch('/updateBook', (req, res) => {
     let incomingUpdate = req.body
 
     incomingUpdate.name = req.body.name
@@ -34,7 +38,7 @@ app.patch('/updateBook', (req, res) => {
 
 })
 
-app.delete('/deletebook', (req, res) => {
+appRoutes.delete('/deletebook', (req, res) => {
     if (req.body !== Number && req.body == 0) {
         res.send('invalid request')
     }
@@ -43,3 +47,5 @@ app.delete('/deletebook', (req, res) => {
 
     res.send(db)
 })
+
+module.exports = appRoutes
