@@ -34,7 +34,10 @@ appRoutes.patch('/updateBook', (req, res) => {
     incomingUpdate.id = req.body.id
 
     let updateItem = db.filter(((x) => x.id == incomingUpdate.id))
-    res.send(db[updateItem])
+    updateItem[0].name = req.body.name
+    db.push(updateItem)
+    res.send(updateItem)
+
 
 })
 
