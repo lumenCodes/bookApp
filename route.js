@@ -6,11 +6,15 @@ const { ulid } = require('ulid')
 let db = []
 appRoutes.get('/home', (req, res) => {
 
-    res.send('<h3>This book app will be used to display the list of books that a user has created</h3>' + db.map((book) => {
-        return [book.name].join(" ")
-    })
-    )
-});
+    res.send(`
+    <h3>This book app will be used to display the list of books that a user has created</h3>
+    <ul>
+     ${db.map((book) => `<li> ${[book.name]}</li>`).join(" ")
+    }
+    </ul>
+    `
+    )}
+)
 
 appRoutes.post('/createBook', (req, res) => {
     const index = db.length - 1
