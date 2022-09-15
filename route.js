@@ -44,15 +44,14 @@ appRoutes.patch('/updateBook', (req, res) => {
 
 })
 
-appRoutes.post('/search', (req, res) => {
+appRoutes.get('/search',async (req, res) => {
     const myRegex = /jhj/
     let searchTerm  = req.body.search// or param?
-    const searchAction = searchTerm.exec(db)
-    {
-        const returnedBooks= db.filter(myRegex)
-
-        res.send(returnedBooks)
-    }
+    const searchResult = db.filter((searchTerm)=> {
+        //logic to return books that fulfils this regex condition
+        {name: {$regex: searchTerm}}
+    })  
+    res.send(searchResult)
 })
 
 appRoutes.delete('/deletebook', (req, res) => {
