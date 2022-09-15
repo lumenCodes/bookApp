@@ -9,8 +9,7 @@ appRoutes.get('/home', (req, res) => {
     res.send(`
     <h3>This book app will be used to display the list of books that a user has created</h3>
     <ul>
-     ${db.map((book) => `<li> ${[book.name]}</li>`).join(" ")
-    }
+        ${db.map((book) => `<li> ${book.name}</li>`).join(" ")}
     </ul>
     `
     )}
@@ -43,6 +42,17 @@ appRoutes.patch('/updateBook', (req, res) => {
     res.send(updateItem)
 
 
+})
+
+appRoutes.post('/search', (req, res) => {
+    const myRegex = /jhj/
+    let searchTerm  = req.body.search// or param?
+    const searchAction = searchTerm.exec(db)
+    {
+        const returnedBooks= db.filter(myRegex)
+
+        res.send(returnedBooks)
+    }
 })
 
 appRoutes.delete('/deletebook', (req, res) => {
