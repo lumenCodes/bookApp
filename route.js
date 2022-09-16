@@ -45,12 +45,11 @@ appRoutes.patch('/updateBook', (req, res) => {
 })
 
 appRoutes.get('/search',async (req, res) => {
-    const myRegex = /jhj/
-    let searchTerm  = req.body.search// or param?
-    const searchResult = db.filter((searchTerm)=> {
+    let searchTerm  = req.query.search // or param?
+    const searchResult = db.filter((word)=> {
         //logic to return books that fulfils this regex condition
-        {name: {$regex: searchTerm}}
-    })  
+        return word.name.toLowerCase().includes(searchTerm.toLowerCase())
+    })
     res.send(searchResult)
 })
 
